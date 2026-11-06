@@ -6,6 +6,9 @@ const app = express();
 app.use(express.json());
 
 const products = [];
+app.get("/", (req, res) => {
+  res.send("<h1>Products API is running!</h1><p>Visit /products to access the products API.</p>");
+});
 
 // ================= CRUD =================
 
@@ -81,7 +84,7 @@ app.delete("/products/:id", (req, res) => {
   }
 });
 
-const PORT = 4000;
+const PORT =process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
